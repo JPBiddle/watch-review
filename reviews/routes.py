@@ -2,6 +2,7 @@ import os
 from flask import render_template
 from reviews import app, db
 
+app.static_folder = 'static'
 
 @app.route("/")
 def index():
