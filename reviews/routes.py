@@ -1,7 +1,7 @@
 import os
 from flask import render_template
 from reviews import app
-# from models import reviewpost
+from .models import reviews
 
 app.static_folder = 'static'
 
