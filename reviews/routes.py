@@ -1,7 +1,7 @@
 import os
-from flask import render_template
-from reviews import app
-from .models import reviews
+from flask import render_template, request, redirect
+from reviews import app, db
+from .models import Reviews
 
 app.static_folder = 'static'
 
@@ -23,3 +23,18 @@ def about():
 @app.route("/review")
 def review():
     return render_template("review.html")
+
+
+@app.route("/addpost", methods=['POST'])
+def addpost():
+    title =  request.form['title']
+    subtitle = request.form['subtitle']
+    author = request.form['author']
+    content = request.form['content']
+
+    post = Reviews(title=title, subtitle=subtitle, author=author, content=content)
+
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect(url_for('home'))

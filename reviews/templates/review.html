@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> Add review </h1>
+
+
+<header class="masthead" style="background-image: url('https://oracleoftime.com/wp-content/uploads/2020/12/Farer-Morgan-Pilot-featured.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Add Review</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 <!-- Review post form -->
 
@@ -9,9 +21,9 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>Add your review below!</p>
+                <h3>Add your review below!</h3>
                 <div class="my-5">
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
                         <!-- Title -->
                         <div class="form-floating">
                             <input class="form-control" type="text" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." />
@@ -24,12 +36,12 @@
                         </div>             
                         <!-- Author -->           
                         <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Author" name="author id="author" data-sb-validations="Please enter your name." />
+                            <input class="form-control" type="text" placeholder="Author" name="author" id="author" data-sb-validations="Please enter your name." />
                             <label for="author">Author</label>
                         </div>
                         <!-- Content -->
                         <div class="form-floating">
-                            <textarea class="form-control" id="content" placeholder="Content" name="content" style="height: 12rem" data-sb-validations="Enter your content here."></textarea>
+                            <textarea class="form-control" type="text" id="content" placeholder="Content" name="content" style="height: 12rem" data-sb-validations="Enter your content here."></textarea>
                             <label for="content">Content</label>
                         </div>
                         <br />
@@ -42,7 +54,7 @@
                         <!-- Submit error message -->
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error posting!</div></div>
                         <!-- Submit Button -->
-                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Post review</button>
+                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Post review</button>
                     </form>
                 </div>
             </div>
