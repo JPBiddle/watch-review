@@ -6,8 +6,8 @@ class Reviews(db.Model):
     title = db.Column(db.String(60))
     subtitle = db.Column(db.String(50))
     author = db.Column(db.String(30))
-    # date = db.Column(db.Date)
-    content = db.Column(db.String(1000))
+    date = db.Column(db.Date)
+    content = db.Column(db.Text)
 
     def __repr__(self):
     #     # __repr__ to represent itself in the form of a string

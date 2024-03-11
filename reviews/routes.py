@@ -25,7 +25,14 @@ def review():
     return render_template("review.html")
 
 
-@app.route("/addpost", methods=['POST'])
+@app.route("/posts/<string:id>")
+def posts(id):
+    posts = Reviews.query.filter_by(id=id).one_or_none()
+
+    return render_template('posts.html', posts=posts)
+    
+
+@app.route("/addpost", methods=['GET', 'POST'])
 def addpost():
     title =  request.form['title']
     subtitle = request.form['subtitle']
