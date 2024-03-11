@@ -1,5 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> review </h1>
+<h1> Add review </h1>
+
+<!-- Review post form -->
+
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Add your review below!</p>
+                <div class="my-5">
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <!-- Title -->
+                        <div class="form-floating">
+                            <input class="form-control" type="text" placeholder="Title" id="title" data-sb-validations="Please enter your title." />
+                            <label for="title">Title</label>
+                        </div>
+                        <!-- Subtitle -->
+                        <div class="form-floating">
+                            <input class="form-control" type="text" placeholder="Subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." />
+                            <label for="subtitle">Subtitle</label>
+                        </div>             
+                        <!-- Author -->           
+                        <div class="form-floating">
+                            <input class="form-control" type="text" placeholder="Author" id="author" data-sb-validations="Please enter your name." />
+                            <label for="author">Author</label>
+                        </div>
+                        <!-- Content -->
+                        <div class="form-floating">
+                            <textarea class="form-control" id="content" placeholder="Content" style="height: 12rem" data-sb-validations="Enter your content here."></textarea>
+                            <label for="content">Content</label>
+                        </div>
+                        <br />
+                        <!-- Submit success message -->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Post successful!</div>
+                            </div>
+                        </div>
+                        <!-- Submit error message -->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error posting!</div></div>
+                        <!-- Submit Button -->
+                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Post review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 {% endblock %}
