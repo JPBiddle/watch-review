@@ -14,7 +14,8 @@
     </div>
 </header>
 
-<form method="POST" action="">
+<form method="POST" >
+    
     {{ form.hidden_tag() }}
     {{ form.username.label }}
     {{ form.username }}
@@ -22,28 +23,7 @@
     {{ form.password }}
     <br/>
     {{ form.submit }}
-</form>
 
-<!-- <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h3>Enter your details below</h3>
-                <div class="my-5">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username"
-            </div>
-            <div class="mb-3">
-                <label for="emailaddress" class="form-label">Email Address</label>
-                <input type="emailaddress" class="form-control" id="emailaddress" name="emailaddress" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button class="btn btn-primary text-uppercase" ="submit" class="btn mb-4">Sign Up</button>
-        </form>
-    </div>
-</div> -->
+</form>
 
 {% endblock %}
