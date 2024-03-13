@@ -1,7 +1,8 @@
 import os
 from flask import render_template, request, redirect, url_for
 from reviews import app, db
-from .models import Reviews
+from .models import Reviews, Users
+
 
 app.static_folder = 'static'
 

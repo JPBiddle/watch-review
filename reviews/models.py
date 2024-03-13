@@ -1,4 +1,6 @@
 from reviews import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime, time
 
 class Reviews(db.Model):
     # schema for new posted reviews
@@ -10,7 +12,16 @@ class Reviews(db.Model):
     content = db.Column(db.Text)
 
     def __repr__(self):
-    #     # __repr__ to represent itself in the form of a string
         return self.title
 
 
+class Users(db.Model):
+    # schema for new user created
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), nullable=False)
+    emailaddress = db.Column(db.String(150), nullable=False, unique=True)
+    password_hash = db.Column(db.String(128))
+
+
+    def __repr__(self):
+        return self.username
