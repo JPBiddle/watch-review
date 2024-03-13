@@ -27,7 +27,7 @@ def review():
 
 @app.route("/posts/<string:id>")
 def posts(id):
-    posts = Reviews.query.filter_by(id=id).one_or_none()
+    posts = Reviews.query.filter_by(id=id).one()
 
     return render_template('posts.html', posts=posts)
     
