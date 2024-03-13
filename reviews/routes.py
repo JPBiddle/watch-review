@@ -14,7 +14,6 @@ def index():
 def home():
     return render_template("home.html")
 
-
 @app.route("/about")
 def about():
     return render_template("about.html")
@@ -23,6 +22,11 @@ def about():
 @app.route("/review")
 def review():
     return render_template("review.html")
+
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
 
 
 @app.route("/posts/<string:id>")
