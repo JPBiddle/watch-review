@@ -30,39 +30,12 @@ def about():
 def review():
     return render_template("review.html")
 
-
-@app.route("/signup", methods=['GET', 'POST'])
+@app.route("/signup")
 def signup():
-    name = None
-    form = Register()
-    if form.validate_on_submit():
-        username = Users.query.filter_by(username=form.username.data).first()
-        if username is None:
-            password = generate_password_hash(form.password.data, "sha256")
-            user = Users(username=form.username.data, password=password)
-        db.session.add(post)
-        db.session.commit()
-        form.username.data = ''
-        form.password.data = ''
-    return render_template("signup.html", form=form)
-# Routes to register as a new user
-
-
-class Register(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField("Sign Up")
+    return render_template("signup.html")
 
 
 # Routes to post a review
-
-@app.route("/posts/<string:id>")
-def posts(id):
-    posts = Reviews.query.filter_by(id=id).one()
-
-    return render_template('posts.html', posts=posts)
-    
-# Route for add post form
 
 @app.route("/addpost", methods=['GET', 'POST'])
 def addpost():
@@ -76,7 +49,31 @@ def addpost():
     db.session.add(post)
     db.session.commit()
 
-    return redirect(url_for('home'))
+    return render_template("home.html")
+
+@app.route("/posts/<string:id>")
+def posts(id):
+    posts = Reviews.query.filter_by(id=id).one()
+
+    return render_template("posts.html", posts=posts)
+
+#new user
+    
+@app.route("/newuser", methods=['GET', 'POST'])
+def newuser():
+    username =  request.form['username']
+    password = request.form['password']
+    hashed_password = generate_password_hash(password, "sha256")
+    user = Users(username=username, password=hashed_password)
+
+    db.session.add(user)
+    db.session.commit()
+
+    return render_template("home.html")
+
+
+
+
 
 
 
