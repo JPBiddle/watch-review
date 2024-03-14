@@ -1,5 +1,5 @@
 import os
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session
 from reviews import app, db
 from .models import Reviews, Users
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -81,15 +81,18 @@ def newuser():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     username =  request.form['username']
-    password = request.form['password']
-
+    password =  request.form['password']
     user = Users.query.filter_by(username=username).first()
-
+    if user:
+         if check_password_hash(user.password, password):
+            session['user'] = user.username 
+            login_user(user)
+            return "<h3>Logged in</h3>"
     if not user:
         return "<h3>User doesn't exist</h3>"
-    
-    login_user(user)
-    return "<h3>You are now logged in</h3>"
+    else:
+        return "<h3>Incorrect password</h3>"
+
 
 
 login_manager = LoginManager()
