@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Sign up!</h1>
+                    <h1>Sign in!</h1>
                 </div>
             </div>
         </div>
@@ -19,9 +19,9 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <h4>Enter your desired username and password </h4>
+                <h4>Enter username and password </h4>
                 <div class="my-5">
-                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('newuser') }}" data-sb-form-api-token="API_TOKEN">
+                    <form name="addForm" id="addForm" method="POST" action="" data-sb-form-api-token="API_TOKEN">
                         <!-- Username -->
                         <div class="form-floating">
                             <input class="form-control" type="text" placeholder="Username" name="username" id="username" data-sb-validations="Please enter your username." />
@@ -36,13 +36,13 @@
                         <!-- Submit success message -->
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
-                                <div class="fw-bolder">Sign up successful!</div>
+                                <div class="fw-bolder">Login successful!</div>
                             </div>
                         </div>
                         <!-- Submit error message -->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error signing up!</div></div>
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error Logging in!</div></div>
                         <!-- Submit Button -->
-                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Sign up</button>
+                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Log in</button>
                     </form>
                 </div>
             </div>

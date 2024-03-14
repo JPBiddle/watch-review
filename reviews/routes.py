@@ -25,7 +25,6 @@ def home():
 def about():
     return render_template("about.html")
 
-
 @app.route("/review")
 def review():
     return render_template("review.html")
@@ -34,8 +33,13 @@ def review():
 def signup():
     return render_template("signup.html")
 
+@app.route("/signin")
+def signin():
+    return render_template("signin.html")
 
-# Routes to post a review
+
+# Post a new review
+
 
 @app.route("/addpost", methods=['GET', 'POST'])
 def addpost():
@@ -57,7 +61,8 @@ def posts(id):
 
     return render_template("posts.html", posts=posts)
 
-#new user
+
+# Sign up to be a new user
     
 @app.route("/newuser", methods=['GET', 'POST'])
 def newuser():
