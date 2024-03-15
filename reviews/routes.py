@@ -1,5 +1,5 @@
 import os
-from flask import render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from reviews import app, db
 from .models import Reviews, Users
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -27,12 +27,11 @@ def review():
 
 @app.route("/signup")
 def signup():
-    return render_template("signup.html")
+        return render_template("signup.html")
 
 @app.route("/signin")
 def signin():
     return render_template("signin.html")
-
 
 @app.route("/dashboard", methods=['GET', 'POST'])
 @login_required
@@ -79,20 +78,21 @@ def newuser():
     return render_template("home.html", user=user)
 
 @app.route("/login", methods=['GET', 'POST'])
-def login():
+def login():   
     username =  request.form['username']
     password =  request.form['password']
     user = Users.query.filter_by(username=username).first()
     if user:
-         if check_password_hash(user.password, password):
-            session['user'] = user.username 
-            login_user(user)
-            return "<h3>Logged in</h3>"
-    if not user:
-        return "<h3>User doesn't exist</h3>"
-    else:
-        return "<h3>Incorrect password</h3>"
-
+        if check_password_hash(user.password, password):
+            session['user'] = request.form['username'] 
+            login_user(user, remember=True)
+            flash(f"Logged in", "info")
+            return render_template("dashboard.html")
+        if not user:
+            return "<h3>User doesn't exist</h3>"
+        else:
+            return "<h3>Incorrect password</h3>"
+    # return render_template("signin.html")
 
 
 login_manager = LoginManager()

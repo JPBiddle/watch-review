@@ -10,9 +10,17 @@
                     <h1>Your Reviews</h1>
                     <span class="subheading">You are logged in</span>
                 </div>
+
             </div>
         </div>
     </div>
-</header>
 
+</header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 {% endblock %}
