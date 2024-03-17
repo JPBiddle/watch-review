@@ -7,6 +7,15 @@ from flask_login import UserMixin, login_user, login_required, logout_user, curr
 
 app.static_folder = 'static'
 
+login_manager = LoginManager()
+login_manager.init_app(app, db)
+login_manager.login_view = "login"
+
+@login_manager.user_loader
+def load_user(user_id):
+	return Users.get(user_id)
+
+
 # Routes for navigation
 
 @app.route("/")
@@ -34,7 +43,6 @@ def signin():
     return render_template("signin.html")
 
 @app.route("/dashboard", methods=['GET', 'POST'])
-@login_required
 def dashboard():
     return render_template("dashboard.html")
 
@@ -42,7 +50,6 @@ def dashboard():
 
 
 @app.route("/addpost", methods=['GET', 'POST'])
-@login_required
 def addpost():
     title =  request.form['title']
     subtitle = request.form['subtitle']
@@ -74,32 +81,27 @@ def newuser():
 
     db.session.add(user)
     db.session.commit()
-
     return render_template("home.html", user=user)
 
 @app.route("/login", methods=['GET', 'POST'])
-def login():   
+def login():
     username =  request.form['username']
     password =  request.form['password']
     user = Users.query.filter_by(username=username).first()
     if user:
         if check_password_hash(user.password, password):
             session['user'] = request.form['username'] 
-            login_user(user, remember=True)
-            flash(f"Logged in", "info")
-            return render_template("dashboard.html")
+            login_user(user)
+            flash("Welcome {}".format(request.form.get("username")))
+            return redirect(url_for('dashboard'))
         if not user:
             return "<h3>User doesn't exist</h3>"
         else:
             return "<h3>Incorrect password</h3>"
-    # return render_template("signin.html")
+    return render_template("signin.html", form=form)
 
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
-
-@login_manager.user_loader
-def load_user(user_id):
-    return Users.query.get(int(user_id))
+@app.route("/logout", methods=['GET', 'POST'])
+@login_required
+def logout():
+    logout_user()
 

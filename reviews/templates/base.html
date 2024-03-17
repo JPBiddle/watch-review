@@ -21,7 +21,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-          <!-- <a class="navbar-brand" href="{{ url_for('home') }}">Watch Review</a> -->
+          <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
@@ -29,23 +29,26 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('about') }}">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('review') }}">Add Review</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                <a class="nav-link" href="{{ url_for('dashboard') }}">Your Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('signin') }}">Log in</a>
-              </li>
+                <a class="nav-link" href="{{ url_for('signup') }}">Sign up/Login</a>
+	            </li>
+              {% if current_user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('dashboard') }}">Log in</a>
-              </li>
+                <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+	            </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('signin') }}">Sign in</a>
+	            </li>
+              {% endif %}
             </ul>
           </div>
         </div>

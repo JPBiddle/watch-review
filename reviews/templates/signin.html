@@ -14,6 +14,13 @@
     </div>
 </header>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
@@ -33,14 +40,7 @@
                             <label for="password">Password</label>
                         </div>                        
                         <br />
-                        <!-- Submit success message -->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Login successful!</div>
-                            </div>
                         </div>
-                        <!-- Submit error message -->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error Logging in!</div></div>
                         <!-- Submit Button -->
                         <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Log in</button>
                     </form>

@@ -8,7 +8,13 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Your Reviews</h1>
-                    <span class="subheading">You are logged in</span>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for msg in messages %}
+                                <span>{{msg}}</span>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                 </div>
 
             </div>
@@ -16,11 +22,7 @@
     </div>
 
 </header>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-                <p>{{msg}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+
+
+
 {% endblock %}
