@@ -14,7 +14,9 @@ login_manager.login_view = "login"
 
 @login_manager.user_loader
 def load_user(user_id):
-	return Users.get(users_id)
+    user = user_id
+    print("User id: ", user)
+    return Users.query.get(user_id)
 
 
 # Routes for navigation
@@ -105,8 +107,9 @@ def login():
 
 # Logout user
 
-@app.route("/logout", methods=['GET', 'POST'])
+@app.route("/signout", methods=['GET', 'POST'])
 @login_required
-def logout():
+def signout():
     logout_user()
+    return render_template("dashboard.html")
 
