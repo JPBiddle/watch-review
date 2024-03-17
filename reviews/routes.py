@@ -55,12 +55,12 @@ def dashboard():
 
 @app.route("/addpost", methods=['GET', 'POST'])
 def addpost():
+    poster = current_user.id
     title =  request.form['title']
     subtitle = request.form['subtitle']
-    author = request.form['author']
     content = request.form['content']
 
-    post = Reviews(title=title, subtitle=subtitle, author=author, content=content)
+    post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
 
     db.session.add(post)
     db.session.commit()
@@ -81,12 +81,21 @@ def posts(id):
 def newuser():
     username =  request.form['username']
     password = request.form['password']
-    hashed_password = generate_password_hash(password, "sha256")
-    user = Users(username=username, password=hashed_password)
-
-    db.session.add(user)
-    db.session.commit()
-    return render_template("home.html", user=user)
+    existuser = Users.query.filter_by(username=username).first()
+    print(existuser)
+    print(username)
+    if existuser:
+        flash("Username already exists, please choose a different username.")
+        redirect(url_for('signin'))
+    else:
+        hashed_password = generate_password_hash(password, "sha256")
+        user = Users(username=username, password=hashed_password)
+        
+     
+        db.session.add(user)
+        db.session.commit()
+        return render_template("home.html", user=user)
+    return render_template("signup.html")
 
 # Login user
 
