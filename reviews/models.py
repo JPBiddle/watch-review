@@ -15,6 +15,6 @@ class Reviews(db.Model):
     title = db.Column(db.String(60))
     subtitle = db.Column(db.String(50))
     author = db.Column(db.String(30))
-    date = db.Column(db.Date)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
     content = db.Column(db.Text)
     review_id = db.Column(db.Integer, db.ForeignKey('users.id'))
