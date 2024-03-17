@@ -19,4 +19,18 @@
 <h1>{{ mesg }}</h1>
 {% endfor %}
 
+<br/>
+
+{% for post in posts %}
+
+<div class="container"><a href="{{ url_for('posts', id=post.id) }}">
+    <h4>{{ post.title }}</h4>
+    <h5>{{ post.subtitle }}</h5>
+    By: {{ post.poster.username }} 
+    on {{ post.date }} </a><br/><br/>
+    </br>
+</div>
+
+{% endfor %}
+
 {% endblock %}

@@ -49,13 +49,16 @@ def signin():
 
 @app.route("/dashboard", methods=['GET', 'POST'])
 def dashboard():
-    return render_template("dashboard.html")
+    posts = current_user.poster
+    # userposts = Reviews.query.filter_by(user=current_user)
+    print (current_user)
+    return render_template("dashboard.html", user=current_user, posts=posts)
 
 # Post a new review
 
 @app.route("/addpost", methods=['GET', 'POST'])
 def addpost():
-    poster = current_user.id
+    poster = current_user
     title =  request.form['title']
     subtitle = request.form['subtitle']
     content = request.form['content']
@@ -82,16 +85,12 @@ def newuser():
     username =  request.form['username']
     password = request.form['password']
     existuser = Users.query.filter_by(username=username).first()
-    print(existuser)
-    print(username)
     if existuser:
         flash("Username already exists, please choose a different username.")
         redirect(url_for('signin'))
     else:
         hashed_password = generate_password_hash(password, "sha256")
         user = Users(username=username, password=hashed_password)
-        
-     
         db.session.add(user)
         db.session.commit()
         return render_template("home.html", user=user)
