@@ -94,16 +94,19 @@ def newuser():
 def login():
     username =  request.form['username']
     password =  request.form['password']
+    printuser = username
     user = Users.query.filter_by(username=username).first()
     if user and check_password_hash(user.password, password):
         login_user(user)
-        flash("Welcome")
+        flash("Logged in successfully")
         return redirect(url_for('dashboard'))
     if not user:
-        return "<h3>User doesn't exist</h3>"
+        flash("User doesn't exist, please sign up.")
+        return redirect(url_for('signup'))
     else:
-        return "<h3>Incorrect password</h3>"
-    return render_template("signin.html", form=form)
+        flash("Password incorrect.")
+        return redirect(url_for('signin'))
+    return render_template("signin.html")
 
 # Logout user
 

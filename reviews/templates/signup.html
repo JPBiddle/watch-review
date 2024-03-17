@@ -14,6 +14,9 @@
     </div>
 </header>
 
+{% for mesg in get_flashed_messages() %}
+<h1>{{ mesg }}</h1>
+{% endfor %}
 
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
