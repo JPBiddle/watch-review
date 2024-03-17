@@ -25,6 +25,8 @@
     <h5>{{ post.subtitle }}</h5>
     By: {{ post.author }}
     on {{ posts.date }}<br/><br/>
+    <a href="{{ url_for('posts', id=post.id) }}">View</a></br>
+    </br>
 </div>
 
 {% endfor %}
