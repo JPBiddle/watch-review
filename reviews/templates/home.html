@@ -20,12 +20,11 @@
 
 {% for post in posts %}
 
-<div class="container">
-    <h4>{{ post.title }}</h4><br/>
+<div class="container"><a href="{{ url_for('posts', id=post.id) }}">
+    <h4>{{ post.title }}</h4>
     <h5>{{ post.subtitle }}</h5>
-    By: {{ post.author }}
-    on {{ posts.date }}<br/><br/>
-    <a href="{{ url_for('posts', id=post.id) }}">View</a></br>
+    By: {{ post.author }} 
+    on {{ post.date }} </a><br/><br/>
     </br>
 </div>
 
