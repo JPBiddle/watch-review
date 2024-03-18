@@ -23,7 +23,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template("base.html")
+    return render_template("home.html")
 
 @app.route("/home")
 def home():
@@ -36,6 +36,7 @@ def about():
     return render_template("about.html")
 
 @app.route("/review")
+@login_required
 def review():
     return render_template("review.html")
 
@@ -52,7 +53,6 @@ def signup():
 def dashboard():
     posts = current_user.poster
     # userposts = Reviews.query.filter_by(user=current_user)
-    print (current_user)
     return render_template("dashboard.html", user=current_user, posts=posts)
 
 # Post a new review
@@ -68,8 +68,8 @@ def addpost():
 
     db.session.add(post)
     db.session.commit()
-
-    return render_template("home.html")
+    flash("Review posted!")
+    return redirect(url_for('dashboard'))
 
 # Populate page with a review
 
@@ -124,5 +124,17 @@ def login():
 @login_required
 def signout():
     logout_user()
-    return render_template("sigin.html")
+    return render_template("signin.html")
 
+# Delete user posts
+@app.route("/posts/delete/<int:id>")
+def delete_review(id):
+    review_to_delete = Reviews.query.get_or_404(id)
+    try:
+        db.session.delete(review_to_delete)
+        db.session.commit()
+        flash("Review deleted.")
+        return redirect(url_for('dashboard'))
+    except:
+        flash("Error, post not deleted.")
+        return render_template("dashboard.html", user=current_user, posts=posts)

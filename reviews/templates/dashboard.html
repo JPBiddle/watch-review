@@ -28,6 +28,7 @@
     <h5>{{ post.subtitle }}</h5>
     By: {{ post.poster.username }} 
     on {{ post.date.strftime('%d %B, %Y') }} </a><br/><br/>
+    <a href="{{ url_for('delete_review', id=post.id) }}" class="btn">Delete</a>
     </br>
 </div>
 
