@@ -43,11 +43,12 @@ def review():
 def signup():
         return render_template("signup.html")
 
-@app.route("/signin")
-def signin():
-    return render_template("signin.html")
+# @app.route("/signin")
+# def signin():
+#     return render_template("signin.html")
 
 @app.route("/dashboard", methods=['GET', 'POST'])
+@login_required
 def dashboard():
     posts = current_user.poster
     # userposts = Reviews.query.filter_by(user=current_user)
@@ -98,22 +99,23 @@ def newuser():
 
 # Login user
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/signin", methods=['GET', 'POST'])
 def login():
-    username =  request.form['username']
-    password =  request.form['password']
-    printuser = username
-    user = Users.query.filter_by(username=username).first()
-    if user and check_password_hash(user.password, password):
-        login_user(user)
-        flash("Logged in successfully")
-        return redirect(url_for('dashboard'))
-    if not user:
-        flash("User doesn't exist, please sign up.")
-        return redirect(url_for('signup'))
-    else:
-        flash("Password incorrect.")
-        return redirect(url_for('signin'))
+    if request.method == "POST":
+        username =  request.form['username']
+        password =  request.form['password']
+        printuser = username
+        user = Users.query.filter_by(username=username).first()
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            flash("Logged in successfully")
+            return redirect(url_for('dashboard'))
+        if not user:
+            flash("User doesn't exist, please sign up.")
+            return redirect(url_for('signup'))
+        else:
+            flash("Password incorrect.")
+            return redirect(url_for('signup'))
     return render_template("signin.html")
 
 # Logout user
@@ -122,5 +124,5 @@ def login():
 @login_required
 def signout():
     logout_user()
-    return render_template("dashboard.html")
+    return render_template("sigin.html")
 
