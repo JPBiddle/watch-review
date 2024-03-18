@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Add Review</h1>
+                    <h1>Edit Review</h1>
                 </div>
             </div>
         </div>
@@ -21,27 +21,27 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <h3>Add your review below!</h3>
+                <h3>Edit your review</h3>
                 <div class="my-5">
-                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
+                    <form name="addForm" id="addForm" method="GET" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
                         <!-- Title -->
                         <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." maxlength="60" />
-                            <label for="title">Title</label>
+                            <input class="form-control" type="text" value="{{ editpost.title }}" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." />
+                            <label for="title"></label>
                         </div>
                         <!-- Subtitle -->
                         <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." maxlength="50" />
-                            <label for="subtitle">Subtitle</label>
+                            <input class="form-control" type="text" value="{{ editpost.subtitle }}" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." />
+                            <label for="subtitle"></label>
                         </div>             
                         <!-- Content -->
                         <div class="form-floating">
-                            <textarea class="form-control" type="text" id="content" placeholder="Content" name="content" style="height: 12rem" data-sb-validations="Enter your content here."></textarea>
-                            <label for="content">Content</label>
+                            <textarea class="form-control" type="text" id="content" value="{{ editpost.content }}" placeholder="Content" name="content" style="height: 12rem" data-sb-validations="Enter your content here.">{{ editpost.content }}</textarea>
+                            <label for="content"></label>
                         </div>
                         <br />
                         <!-- Submit Button -->
-                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Post review</button>
+                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Update review</button>
                     </form>
                 </div>
             </div>

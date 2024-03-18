@@ -28,7 +28,7 @@ def index():
 @app.route("/home")
 def home():
     # Get all posts from db
-    posts = Reviews.query.order_by(Reviews.date.desc())[1:9]
+    posts = Reviews.query.order_by(Reviews.date.desc())[0:8]
     return render_template("home.html", posts=posts)
 
 @app.route("/about")
@@ -126,7 +126,7 @@ def signout():
     return render_template("signin.html")
 
 # Delete user posts
-@app.route("/posts/delete/<int:id>")
+@app.route("/posts/delete/<string:id>")
 def delete_review(id):
     review_to_delete = Reviews.query.get_or_404(id)
     try:
@@ -137,3 +137,22 @@ def delete_review(id):
     except:
         flash("Error, review not deleted.")
         return redirect(url_for('dashboard'))
+
+
+# Edit users review
+@app.route("/posts/edit/<int:id>", methods=['GET', 'POST'])
+def edit_review(id):
+    editpost = Reviews.query.get_or_404(id)
+    # if request.method == "POST":
+    #     editpost.poster = current_user
+    #     editpost.title =  request.form.get['title']
+    #     editpost.subtitle = request.form.get['subtitle']
+    #     editpost.content = request.form.get['content']
+
+    #     post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
+
+    #     db.session.add(post)
+    #     db.session.commit()
+    #     flash("Review updated!")
+    # else:
+    return render_template("edit.html", editpost=editpost)
