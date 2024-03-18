@@ -10,7 +10,7 @@
                 <h1>{{ posts.title }}</h1>
                 <h2 class="subheading">{{ posts.subtitle }}</h2>
                 <span class="meta">Posted by
-                  {{ posts.poster.username }}
+                  {{ posts.poster.username }} on {{ posts.date.strftime('%d %B, %Y') }}
                   </span>
               </div>
             </div>

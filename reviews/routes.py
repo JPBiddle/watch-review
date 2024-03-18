@@ -28,7 +28,7 @@ def index():
 @app.route("/home")
 def home():
     # Get all posts from db
-    posts = Reviews.query.order_by(Reviews.date)
+    posts = Reviews.query.order_by(Reviews.date.desc())[1:9]
     return render_template("home.html", posts=posts)
 
 @app.route("/about")
@@ -52,7 +52,6 @@ def signup():
 @login_required
 def dashboard():
     posts = current_user.poster
-    # userposts = Reviews.query.filter_by(user=current_user)
     return render_template("dashboard.html", user=current_user, posts=posts)
 
 # Post a new review
@@ -136,5 +135,5 @@ def delete_review(id):
         flash("Review deleted.")
         return redirect(url_for('dashboard'))
     except:
-        flash("Error, post not deleted.")
-        return render_template("dashboard.html", user=current_user, posts=posts)
+        flash("Error, review not deleted.")
+        return redirect(url_for('dashboard'))
