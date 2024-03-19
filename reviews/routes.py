@@ -20,7 +20,6 @@ def load_user(user_id):
     print("User id: ", user)
     return Users.query.get(user_id)
 
-
 # Routes for navigation
 
 @app.route("/")
@@ -30,7 +29,7 @@ def index():
 @app.route("/home")
 def home():
     # Get all posts from db
-    posts = Reviews.query.order_by(Reviews.date.desc())[0:8]
+    posts = Reviews.query.order_by(Reviews.date.desc())
     return render_template("home.html", posts=posts)
 
 @app.route("/about")
@@ -93,7 +92,8 @@ def newuser():
         user = Users(username=username, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        return render_template("signup.html", user=user)
+        flash("User created, you can now sign in!")
+        return render_template("signin.html", user=user)
     return render_template("signup.html")
 
 # Login user
@@ -145,15 +145,13 @@ def delete_review(id):
 def edit_review(id):
     editpost = Reviews.query.get_or_404(id)
     if request.method == "POST":
-        editpost.poster = current_user
+        poster = current_user
         editpost.title =  request.form['title']
         editpost.subtitle = request.form['subtitle']
         editpost.content = request.form['ckeditor']
 
-    #     post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
+        db.session.add(editpost)
+        db.session.commit()
 
-    #     db.session.add(post)
-    #     db.session.commit()
-    #     flash("Review updated!")
-    # else:
+    flash("Review updated!")
     return render_template("edit.html", editpost=editpost)
