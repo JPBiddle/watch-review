@@ -26,18 +26,18 @@
                     <form name="addForm" id="addForm" method="GET" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
                         <!-- Title -->
                         <div class="form-floating">
-                            <input class="form-control" type="text" value="{{ editpost.title }}" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." />
+                            <input class="form-control" type="text" value="{{ editpost.title }}" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." required/>
                             <label for="title"></label>
                         </div>
                         <!-- Subtitle -->
                         <div class="form-floating">
-                            <input class="form-control" type="text" value="{{ editpost.subtitle }}" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." />
+                            <input class="form-control" type="text" value="{{ editpost.subtitle }}" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." required/>
                             <label for="subtitle"></label>
-                        </div>             
+                        </div>           
                         <!-- Content -->
                         <div class="form-floating">
+                            <p>Edit your content below...</p>
                             {{ ckeditor.create(value=editpost.content) }}
-                            <!-- <label for="content">Content</label> -->
                         </div>
                         <br />
                         <!-- Submit Button -->

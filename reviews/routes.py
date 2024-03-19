@@ -42,9 +42,11 @@ def about():
 def review():
     return render_template("review.html")
 
+
 @app.route("/signup")
 def signup():
         return render_template("signup.html")
+
 
 @app.route("/dashboard", methods=['GET', 'POST'])
 @login_required
@@ -80,12 +82,12 @@ def posts(id):
     
 @app.route("/newuser", methods=['GET', 'POST'])
 def newuser():
-    username =  request.form['username']
+    username = request.form['username'].lower()
     password = request.form['password']
     existuser = Users.query.filter_by(username=username).first()
     if existuser:
         flash("Username already exists, please choose a different username.")
-        redirect(url_for('signin'))
+        redirect(url_for('signup'))
     else:
         hashed_password = generate_password_hash(password, "sha256")
         user = Users(username=username, password=hashed_password)
@@ -109,10 +111,10 @@ def login():
             return redirect(url_for('dashboard'))
         if not user:
             flash("User doesn't exist, please sign up.")
-            return redirect(url_for('signup'))
+            return redirect(url_for('signin'))
         else:
             flash("Password incorrect.")
-            return redirect(url_for('signup'))
+            return redirect(url_for('signin'))
     return render_template("signin.html")
 
 # Logout user
