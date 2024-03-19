@@ -83,7 +83,11 @@
   display: none;
 }
 
-.cke_bottom {
+.cke_path {
+  display: none;
+}
+
+.ck_reset_all {
   display: none;
 }
 *,

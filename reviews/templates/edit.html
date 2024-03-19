@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{{ ckeditor.load() }}
 
 <header class="masthead" style="background-image: url('https://oracleoftime.com/wp-content/uploads/2020/12/Farer-Morgan-Pilot-featured.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -36,8 +36,8 @@
                         </div>             
                         <!-- Content -->
                         <div class="form-floating">
-                            <textarea class="form-control" type="text" id="content" value="{{ editpost.content|safe  }}" placeholder="Content" name="content" style="height: 12rem" data-sb-validations="Enter your content here.">{{ editpost.content }}</textarea>
-                            <label for="content"></label>
+                            {{ ckeditor.create(value=editpost.content) }}
+                            <!-- <label for="content">Content</label> -->
                         </div>
                         <br />
                         <!-- Submit Button -->
@@ -48,5 +48,4 @@
         </div>
     </div>
 </main>
-
 {% endblock %}

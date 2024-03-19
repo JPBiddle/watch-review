@@ -141,11 +141,11 @@ def delete_review(id):
 @app.route("/posts/edit/<int:id>", methods=['GET', 'POST'])
 def edit_review(id):
     editpost = Reviews.query.get_or_404(id)
-    # if request.method == "POST":
-    #     editpost.poster = current_user
-    #     editpost.title =  request.form.get['title']
-    #     editpost.subtitle = request.form.get['subtitle']
-    #     editpost.content = request.form.get['content']
+    if request.method == "POST":
+        editpost.poster = current_user
+        editpost.title =  request.form.get['title']
+        editpost.subtitle = request.form.get['subtitle']
+        editpost.content = request.form.get['ckeditor']
 
     #     post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
 
