@@ -123,6 +123,7 @@ def login():
 @login_required
 def signout():
     logout_user()
+    flash("Logged out successfully")
     return render_template("signin.html")
 
 # Delete user posts
