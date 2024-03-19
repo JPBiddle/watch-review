@@ -93,7 +93,7 @@ def newuser():
         user = Users(username=username, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        return render_template("home.html", user=user)
+        return render_template("signup.html", user=user)
     return render_template("signup.html")
 
 # Login user
@@ -111,10 +111,10 @@ def login():
             return redirect(url_for('dashboard'))
         if not user:
             flash("User doesn't exist, please sign up.")
-            return redirect(url_for('signin'))
+            return render_template("signin.html")
         else:
             flash("Password incorrect.")
-            return redirect(url_for('signin'))
+            return render_template("signin.html")
     return render_template("signin.html")
 
 # Logout user

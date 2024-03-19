@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<script>
+function check_pass() {
+    if (document.getElementById('password').value ==
+            document.getElementById('confirmpassword').value) {
+        document.getElementById('submitButton').disabled = false;
+        document.getElementById("ismatch").innerHTML = "Passwords match."
+    } else {
+        document.getElementById('submitButton').disabled = true;
+        document.getElementById("ismatch").innerHTML = "Passwords don't match."
+    }
+}
+</script>
 <header class="masthead" style="background-image: url('https://i2.wp.com/storage.googleapis.com/stateless-watchilove-com/2022/09/dbe6bcf1-sbgx353_kv_1-e1664001241678-1024x576.jpg?ssl=1')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -32,19 +43,16 @@
                         </div>
                         <!-- Password -->
                         <div class="form-floating">
-                            <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." />
+                            <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." onchange='check_pass();' />
                             <label for="password">Password</label>
-                        </div>                        
-                        <br />
-                        <!-- Submit success message -->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Sign up successful!</div>
-                            </div>
                         </div>
-                        <!-- Submit error message -->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error signing up!</div></div>
-                        <!-- Submit Button -->
+                        <div class="form-floating">
+                            <input class="form-control" type="password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" data-sb-validations="Please confirm your password." onchange='check_pass();'/>
+                            <label for="confirm password">Confirm Password</label>
+                        </div>
+                        </br>
+                        <span id="ismatch"></span>                        
+                    </br></br>
                         <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Sign up</button>
                     </form>
                 </div>
