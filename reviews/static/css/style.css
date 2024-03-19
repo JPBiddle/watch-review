@@ -79,6 +79,13 @@
   --bs-highlight-bg: #fff3cd;
 }
 
+.cke_inner .cke_top {
+  display: none;
+}
+
+.cke_bottom {
+  display: none;
+}
 *,
 *::before,
 *::after {

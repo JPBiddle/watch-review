@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{{ ckeditor.load() }}
 <header class="masthead" style="background-image: url('https://www.vintagewinders.co.uk/wp-content/uploads/2017/04/vintage-winders-rolex-banner.jpg')">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -23,7 +23,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>{{ posts.content }}</p>
+          {{ posts.content|safe }}
         </div>
       </div>
     </div>

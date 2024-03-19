@@ -5,12 +5,14 @@ from .models import Reviews, Users
 from sqlalchemy import desc, asc
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, login_required, logout_user, current_user, LoginManager
+from flask_ckeditor import CKEditor
 
 app.static_folder = 'static'
 
 login_manager = LoginManager()
 login_manager.init_app(app, db)
 login_manager.login_view = "login"
+ckeditor = CKEditor(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -44,10 +46,6 @@ def review():
 def signup():
         return render_template("signup.html")
 
-# @app.route("/signin")
-# def signin():
-#     return render_template("signin.html")
-
 @app.route("/dashboard", methods=['GET', 'POST'])
 @login_required
 def dashboard():
@@ -61,7 +59,7 @@ def addpost():
     poster = current_user
     title =  request.form['title']
     subtitle = request.form['subtitle']
-    content = request.form['content']
+    content = request.form['ckeditor']
 
     post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
 
