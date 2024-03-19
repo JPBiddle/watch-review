@@ -143,9 +143,9 @@ def edit_review(id):
     editpost = Reviews.query.get_or_404(id)
     if request.method == "POST":
         editpost.poster = current_user
-        editpost.title =  request.form.get['title']
-        editpost.subtitle = request.form.get['subtitle']
-        editpost.content = request.form.get['ckeditor']
+        editpost.title =  request.form['title']
+        editpost.subtitle = request.form['subtitle']
+        editpost.content = request.form['ckeditor']
 
     #     post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
 
