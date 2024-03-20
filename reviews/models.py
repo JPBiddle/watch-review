@@ -16,4 +16,6 @@ class Reviews(db.Model):
     subtitle = db.Column(db.String(50))
     date = db.Column(db.DateTime, default=datetime.utcnow)
     content = db.Column(db.Text)
+    banner = db.Column(db.String(255))
+    contentimg = db.Column(db.String(255))
     review_id = db.Column(db.Integer, db.ForeignKey('users.id'))

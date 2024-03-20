@@ -61,8 +61,9 @@ def addpost():
     title =  request.form['title']
     subtitle = request.form['subtitle']
     content = request.form['ckeditor']
-
-    post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster)
+    banner =  request.form['banner']
+    contentimg = request.form['contentimg']
+    post = Reviews(title=title, subtitle=subtitle, content=content, poster=poster, banner=banner, contentimg=contentimg)
 
     db.session.add(post)
     db.session.commit()

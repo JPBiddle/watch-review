@@ -40,6 +40,15 @@
                              {{ ckeditor.create() }}
                         </div>
                         <br />
+                        <div class="form-floating">
+                            <input class="form-control" type="text" placeholder="Banner" name="banner" id="banner" data-sb-validations="Please enter your banner image url." maxlength="255" required/>
+                            <label for="subtitle">Enter banner image url here...</label>
+                        </div>  
+                        <div class="form-floating">
+                            <input class="form-control" type="text" placeholder="Content Image" name="contentimg" id="contentimg" data-sb-validations="Please enter your image url." maxlength="255" required/>
+                            <label for="subtitle">Enter content image url here...</label>
+                        </div>  
+                        </br>
                         <!-- Submit Button -->
                         <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Post review</button>
                     </form>
