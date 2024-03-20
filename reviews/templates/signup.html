@@ -39,16 +39,16 @@ function check_pass() {
                     <form name="addForm" id="addForm" method="POST" action="{{ url_for('newuser') }}" data-sb-form-api-token="API_TOKEN">
                         <!-- Username -->
                         <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Username" name="username" id="username" data-sb-validations="Please enter your username." />
+                            <input class="form-control" type="text" placeholder="Username" name="username" id="username" data-sb-validations="Please enter your username." required/>
                             <label for="username">Username</label>
                         </div>
                         <!-- Password -->
                         <div class="form-floating">
-                            <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." onchange='check_pass();' />
+                            <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." onchange='check_pass();' required/>
                             <label for="password">Password</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" type="password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" data-sb-validations="Please confirm your password." onchange='check_pass();'/>
+                            <input class="form-control" type="password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" data-sb-validations="Please confirm your password." onchange='check_pass();' required/>
                             <label for="confirm password">Confirm Password</label>
                         </div>
                         </br>
