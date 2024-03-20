@@ -14,20 +14,25 @@
         </div>
     </div>
 </header>
-
-<h2>Latest Reviews</h2>
+<div class="container">
+<h1 class="text-left">Latest Reviews...</h1>
+</div>
 <br/>
 
 {% for post in posts %}
 
 <div class="container"><a href="{{ url_for('posts', id=post.id) }}">
-    <h4>{{ post.title }}</h4>
-    <h5>{{ post.subtitle }}</h5>
-    By: {{ post.poster.username }} 
-    on {{ post.date.strftime('%d %B, %Y') }} </a><br/><br/>
+    <div class=".col-12 .col-md-8 card opacity-50 bg-dark text-left">
     </br>
+        <div class="card-body">
+            <h4 class="card-title text-white">{{ post.title }}</h4>
+            <h5 class="card-text text-white">{{ post.subtitle }}</h5>
+            <p class="card-text text-white">By: {{ post.poster.username }} 
+            on {{ post.date.strftime('%d %B, %Y') }} </p></a><br/><br/>
+        </div>
+    </div> 
 </div>
-
+</br>
 {% endfor %}
 
 {% endblock %}
