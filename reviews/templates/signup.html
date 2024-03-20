@@ -6,10 +6,10 @@ function check_pass() {
     if (document.getElementById('password').value ==
             document.getElementById('confirmpassword').value) {
         document.getElementById('submitButton').disabled = false;
-        document.getElementById("ismatch").innerHTML = "Passwords match."
+        document.getElementById("ismatch").innerHTML = "Passwords match.</br>"
     } else {
         document.getElementById('submitButton').disabled = true;
-        document.getElementById("ismatch").innerHTML = "Passwords don't match."
+        document.getElementById("ismatch").innerHTML = "Passwords don't match.</br>"
     }
 }
 </script>
@@ -25,8 +25,8 @@ function check_pass() {
     </div>
 </header>
 
-{% for mesg in get_flashed_messages() %}
-<h4 class="text-center" style="color:#02b999;"></h4>>{{ mesg }}</h4>
+{% for msg in get_flashed_messages() %}
+<h4 class="text-center" style="color:#02b999;"></h4>>{{ msg }}</h4>
 {% endfor %}
 
 <main class="mb-4">

@@ -86,7 +86,7 @@ def newuser():
     existuser = Users.query.filter_by(username=username).first()
     if existuser:
         flash("Username already exists, please choose a different username.")
-        redirect(url_for('signup'))
+        redirect(url_for('newuser'))
     else:
         hashed_password = generate_password_hash(password, "sha256")
         user = Users(username=username, password=hashed_password)
@@ -101,7 +101,7 @@ def newuser():
 @app.route("/signin", methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        username =  request.form['username']
+        username =  request.form['username'].lower()
         password =  request.form['password']
         printuser = username
         user = Users.query.filter_by(username=username).first()
