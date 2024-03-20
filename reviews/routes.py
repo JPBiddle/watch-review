@@ -24,7 +24,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    return render_template("home.html")
+    return redirect(url_for('home'))
 
 @app.route("/home")
 def home():
@@ -153,5 +153,5 @@ def edit_review(id):
         db.session.add(editpost)
         db.session.commit()
 
-    flash("Review updated!")
+        flash("Review updated!")
     return render_template("edit.html", editpost=editpost)
