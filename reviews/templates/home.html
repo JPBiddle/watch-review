@@ -14,10 +14,6 @@
         </div>
     </div>
 </header>
-<div class="container">
-<h1 class="text-center">Latest Reviews...</h1>
-</div>
-<br/>
 
 {% for post in posts %}
 <div class="container"><a href="{{ url_for('posts', id=post.id) }}">
