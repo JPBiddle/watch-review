@@ -85,7 +85,7 @@ def newuser():
     password = request.form['password']
     existuser = Users.query.filter_by(username=username).first()
     if existuser:
-        flash("Username already exists, please choose a different username.")
+        flash("Username exists, please choose a different username.")
         redirect(url_for('newuser'))
     else:
         hashed_password = generate_password_hash(password, "sha256")
