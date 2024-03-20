@@ -154,4 +154,5 @@ def edit_review(id):
         db.session.commit()
 
         flash("Review updated!")
+        return redirect(url_for('dashboard'))
     return render_template("edit.html", editpost=editpost)
