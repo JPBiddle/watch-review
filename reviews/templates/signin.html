@@ -17,11 +17,11 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for msg in messages %}
-                <p>{{msg}}</p>
+                <h4 class="text-center" style="color:#02b999;">{{msg}}</h4></br>
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <a class="nav-link" href="{{ url_for('signup') }}">Don't have an account? Sign up here!</a>
+
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -44,10 +44,16 @@
                         <!-- Submit Button -->
                         <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Log in</button>
                     </form>
+                </br></br>
+                <div class="container text-center">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Don't have an account? Sign up here!</a>
                 </div>
+            </div>      
             </div>
         </div>
     </div>
+</br>
+
 </main>
 
 {% endblock %}

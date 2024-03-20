@@ -26,7 +26,7 @@ function check_pass() {
 </header>
 
 {% for mesg in get_flashed_messages() %}
-<h1>{{ mesg }}</h1>
+<h4 class="text-center" style="color:#02b999;"></h4>>{{ mesg }}</h4>
 {% endfor %}
 
 <main class="mb-4">
@@ -52,7 +52,7 @@ function check_pass() {
                         </div>
                         </br>
                         <span id="ismatch"></span>                        
-                    </br></br>
+                    </br>
                         <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Sign up</button>
                     </form>
                 </div>
