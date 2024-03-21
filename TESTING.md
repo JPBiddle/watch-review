@@ -2,7 +2,7 @@
 
 [Main README.md file](https://github.com/JPBiddle/watch-review/blob/main/README.md)
 
-[View Live Project]()
+[View Live Project](https://joels-watch-club-c1dc12de46c4.herokuapp.com/home)
 
 # Contents
 

@@ -3,7 +3,7 @@
 ## Code Institute Milestone Project 3
 
 ![Portfolio Mockup](reviews/static/assets/img/readme_img/review_mockup.png)
-[Click here to view the live project]()
+[Click here to view the live project](https://joels-watch-club-c1dc12de46c4.herokuapp.com/home)
 
 - [Joel's Watch Club](#joels-watch-club)
   - [Table of Contents](#table-of-contents)
@@ -475,7 +475,7 @@ To deploy this app via Heroku the following steps were taken:
 - Create new app in Heroku, add CONFIG details
 - Deploy in Heroku! 
 - Run console, run db.create_all with python to add your database
-- 
+- Congratulations! You have successfully deployed your app to Heroku!
 
 ---
 
