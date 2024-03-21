@@ -100,7 +100,7 @@ With this in mind I have produced a short diagram representing the viability of 
 
 <summary>Viability chart</summary>
 
-![viability]()
+![viability](reviews/static/assets/img/readme_img/viability_chart.jpg)
 
 </details>
 
@@ -279,43 +279,96 @@ The website features a set of functional.
 
 ### Sign Up
 
+Users will be able to choose a unique username to be entered into the database.
+The username will be case insensitive. If a username already exists, user will be notified with a flash message. 
+
+Along with a username, user will be able to create a password to be associated with this username. The password will be hashed unpon entering the database and user will be asked to confirm the password before its allowed to be submitted on the create user form.
+
+This is part of the 'Create/C' in CRUD as part of the milestone project.
 
 
 ---
 
 ### Sign In
 
+After a user has been created, they will be able to sign in, which will be a simple form that checks if the username entered exists in the database, then checks the password (hashed) against the password associated with this username.
 
+Username and password will be required fields.
 
----
-
-### Login
-
-
+If a password is matched, they will be redirected to the user dashboard, where the reviews that are related to this user are displayed and a flash message (success) will be displayed.
 
 ---
 
 ### Logout
 
-
+Using flask logout functionality, the logout function will end the user session and redirect them to the sign in page. If flask logout is notused, session.pop will be user, however, flask logout preferred.
+Username and password will be required fields.
 
 ---
 
 ### Add review
 
+A form will be available in the html which will allow the user (if logged in) to create their own review, consisting of a title, subtitle and content, as well as url's for a banner image and content image to display at the bottom of the text content.
 
+All fields will be required for creating a review.
+
+When entered, all content will be added to the review database, along with the date and time when it was entered. This data will be related to the user which created it, which is why only logged in users can access this page.
+
+CKeditor was used to ensure proper formatting when calling review data from the database.
+
+This is also part of the Create part of CRUD for the project.
 
 ---
 
 ### Delete review
 
+Deleting a review will be a function available on the user dashboard. Login will be required as the page will only display a list of reviews that are related in the database to the current user.
 
+Deleting the review will simply remove all data for the review selected in the database. 
+
+To protect against accidental deletion, a modal will be use to confirm the user wants to delete the post.
+
+A confirm message will let the user know that the review is deleted.
+
+This is the Delete/'D' part of CRUD for the project.
 
 ---
 
 ### Edit review
 
+Users will be give access to an edit form on the dashboard page, which will lead them to a form which is pre filled with the title, subtitle and content of the review selected.
 
+The user can then edit the content of the review, with all parts of the form required, and re submit this form to the database, replacing the current review data. CKeditor used for same purpose as add review.
+
+A flash message will confirm that the user has edited the review.
+
+This is the Update/'U' part of CRUD for the project.
+
+---
+
+### Home page features
+
+From the home page, users will be given a list of the reviews that have been posted.
+
+These will render the title, subtitle, username and date posted of individual reviews, along the with banner image of the reviews as a background/thumbnail.
+
+The list will be populated with a for loop which runs through the database and presents each review which will be clickable to view the whole content.
+
+Content will display with the latest reviews at the top of the page, which will be filtered using the date of the review in the review database.
+
+Login won't be required to view this.
+
+This is the Read/'R' part of CRUD for the project.
+
+---
+
+### Individual review page features
+
+After clicking on an individual review on the home page, a new page will be loaded which will display the title, subtitle, username and date posted on a banner, which will be the banner image submitted by the user for this particular review, at the top of the page.
+
+Below this will be the review content and at the bottom will be the content image of said review.
+
+Like the home page, login won't be required and this is an additional part of Read for CRUD.
 
 ---
 
@@ -323,9 +376,13 @@ The website features a set of functional.
 
 Due to time constraints I was unable to implement the following functions, however the would make a nice addition to the website:
 
-- 
-- 
-- 
+- A search function to allow users to search through reviews
+- A star rating for users to rate, which will also allow filtering of results on home page
+- Page pagination, as user reviews on home page will affect loading if there were many reviews.
+- Admin page to allow deletion of reviews or users 
+- An intergrated image upload to avoid using external urls for images
+- User password and username editing
+- User profile page accessible by other users to find other reviews by same 'author', user profile image and bio would be part of this
 
 [Back to top](#joels-watch-club)
 
@@ -333,30 +390,29 @@ Due to time constraints I was unable to implement the following functions, howev
 
 ## Issues and Bugs
 
-### 
+### Logout not working in workspace
+
+When writing the function for logging out, my workspace (codeanywhere) did not allow this to work in my preview. I contacted Sarah, a tutor at code institute for help as was unsure why this was happening. 
+
+Code anywhere was protecting against Logout and the function had to be renamed to signout to fix this bug.
 
 
 
-### 
+### Login Required not preventing new user access
+
+A simple issue with the setup of Flask login - the login view was not correctly set up so the @login_required function of flask login was not preventing unregistered access. 
 
 
 
-###
+### Multiple of the same user in database
 
+When the login function was initially created, it was not case insensitive, which meant that a user with name 'test' and 'Test' were both accepted.
 
-### 
-
-
-
-### 
-
-
+Case insensitive was added by including .lower onto function for querying database to match with the user create form.
 
 ---
 
 ## Technologies Used
-
----
 
 ### Main Languages Used
 
@@ -390,9 +446,12 @@ Due to time constraints I was unable to implement the following functions, howev
   - W3C Validator was used at the end of the project to check forany errors written in my code for both HTML and CSS.
 - w3Schools
   - Here I learned how to implement audio and change class items such as the background images.
-- Youtube
-  - I used extensively whenever I ran into a problem or something I had not done before such as creating modals.
-
+- Flask Login
+  - The documentation for Flask login was used for this application
+- Werkzeug
+  - Documentation used for password hashing
+- CKeditor 
+  Documentation used for using ckeditor
 ---
 
 ## Testing
@@ -427,13 +486,9 @@ To deploy this page to GitHub Pages from its GitHub repository, the following st
 
 ---
 
-- Images from
-- Youtube guide
-- Forum post
-- Tutor Sarah
-- CleanBlog 
-- w3schools, 
-
+- Images and review content from Hodinkee (https://www.hodinkee.com/)
+- CleanBlog was used as a theme to start project (https://startbootstrap.com/theme/clean-blog)
+- The Thorin and Task Manager projects from Code Institute were invaluable for assisting with creating this project
 ---
 
 ## Acknowledgements
