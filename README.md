@@ -461,19 +461,20 @@ Please view full testing document [here](https://github.com/JPBiddle/watch-revie
 ---
 
 This project was developed using CodeAnywhere and was then committed to GitHub using the GitPod terminal.
+The app was deployed using Heroku.
 
 ### Deploying
 
 ---
 
-To deploy this page to GitHub Pages from its GitHub repository, the following steps were taken:
+To deploy this app via Heroku the following steps were taken:
 
-- 
-- 
-- 
-- 
-- 
-- 
+- Create a Heroku Account and an ElephantSQL account.
+- Create Elephant SQL server and obtain database URL
+- Create Requirements and Procfile files in repository
+- Create new app in Heroku, add CONFIG details
+- Deploy in Heroku! 
+- Run console, run db.create_all with python to add your database
 - 
 
 ---
