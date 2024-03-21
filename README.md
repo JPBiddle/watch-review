@@ -1,6 +1,6 @@
 # Joel's Watch Club
 
-## Code Institute Milestone Project 2
+## Code Institute Milestone Project 3
 
 ![Portfolio Mockup](reviews/static/assets/img/readme_img/review_mockup.png)
 [Click here to view the live project]()
@@ -273,7 +273,7 @@ All imagery will be from Hodinkee, a watch news site, and urls will be passed fr
 
 ## Features
 
-The website features a set of functional.
+The website features a set of functions which enable new users to engage with content quickly and allow existing users to return and access their content. Functions are as follows;
 
 ---
 
@@ -456,7 +456,7 @@ Case insensitive was added by including .lower onto function for querying databa
 
 ## Testing
 
-Please view full testing document [here]()
+Please view full testing document [here](https://github.com/JPBiddle/watch-review/blob/main/TESTING.md)
 
 ---
 
