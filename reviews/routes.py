@@ -26,7 +26,7 @@ def load_user(user_id):
 def index():
     return redirect(url_for('home'))
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
     # Get all posts from db
     posts = Reviews.query.order_by(Reviews.date.desc())
