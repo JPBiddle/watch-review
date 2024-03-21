@@ -1,34 +1,35 @@
 {% extends "base.html" %}
-
 {% block content %}
 {{ ckeditor.load() }}
 <header class="masthead" style="background-image: url('https://www.scottishwatches.co.uk/wp49/wp-content/uploads/2022/09/SBGX353_KV_1.jpeg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>Joel's Watch Club</h1>
-                    <span class="subheading">Community Watch Reviews</span>
-                </div>
+   <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+               <h1>Joel's Watch Club</h1>
+               <span class="subheading">Community Watch Reviews</span>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </header>
-
 {% for post in posts %}
-<div class="container"><a href="{{ url_for('posts', id=post.id) }}">
-    <div class=".col-12 .col-md-8 card bg-dark text-left" style="border:none;">
-        <img class="card-img opacity-50" src="{{ post.banner }}" alt="Card image" style="height:220px; object-fit:cover;">
-            <div class="card-img-overlay card-body">
+<div class="container">
+   <a href="{{ url_for('posts', id=post.id) }}">
+      <div class=".col-12 .col-md-8 card bg-dark text-left" style="border:none;">
+         <img class="card-img opacity-50" src="{{ post.banner }}" alt="Card image" style="height:220px; object-fit:cover;">
+         <div class="card-img-overlay card-body">
             </br>
-                <h4 class="card-title text-white">{{ post.title }}</h4>
-                <h5 class="card-text text-white">{{ post.subtitle }}</h5>
-                <p class="card-text text-white">By: {{ post.poster.username }} 
-                on {{ post.date.strftime('%d %B, %Y') }} </p></a><br/><br/>
-            </div>
-  </div>
+            <h4 class="card-title text-white">{{ post.title }}</h4>
+            <h5 class="card-text text-white">{{ post.subtitle }}</h5>
+            <p class="card-text text-white">By: {{ post.poster.username }} 
+               on {{ post.date.strftime('%d %B, %Y') }} 
+            </p>
+   </a>
+   <br/><br/>
+   </div>
+   </div>
 </div>
 </br>
 {% endfor %}
-
 {% endblock %}

@@ -1,51 +1,47 @@
 {% extends "base.html" %}
-
 {% block content %}
 {{ ckeditor.load() }}
-
 <header class="masthead" style="background-image: url('https://oracleoftime.com/wp-content/uploads/2020/12/Farer-Morgan-Pilot-featured.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>Edit Review</h1>
-                </div>
+   <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+               <h1>Edit Review</h1>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </header>
-
 <!-- Review post form -->
-
 <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h3>Edit your review</h3>
-                <div class="my-5">
-                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('edit_review', id=editpost.id) }}" data-sb-form-api-token="API_TOKEN">
-                        <!-- Title -->
-                        <div class="form-floating">
-                            <input class="form-control" type="text" value="{{ editpost.title }}" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." required/>
-                            <label for="title"></label>
-                        </div>
-                        <!-- Subtitle -->
-                        <div class="form-floating">
-                            <input class="form-control" type="text" value="{{ editpost.subtitle }}" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." required/>
-                            <label for="subtitle"></label>
-                        </div>           
-                        <!-- Content -->
-                        <div class="form-floating">
-                            <p style="color: #6c757d;">Edit your content below...</p>
-                            {{ ckeditor.create(value=editpost.content) }}
-                        </div>
-                        <br />
-                        <!-- Submit Button -->
-                        <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Update review</button>
-                    </form>
-                </div>
+   <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <h3>Edit your review</h3>
+            <div class="my-5">
+               <form name="addForm" id="addForm" method="POST" action="{{ url_for('edit_review', id=editpost.id) }}" data-sb-form-api-token="API_TOKEN">
+                  <!-- Title -->
+                  <div class="form-floating">
+                     <input class="form-control" type="text" value="{{ editpost.title }}" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." required/>
+                     <label for="title"></label>
+                  </div>
+                  <!-- Subtitle -->
+                  <div class="form-floating">
+                     <input class="form-control" type="text" value="{{ editpost.subtitle }}" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." required/>
+                     <label for="subtitle"></label>
+                  </div>
+                  <!-- Content -->
+                  <div class="form-floating">
+                     <p style="color: #6c757d;">Edit your content below...</p>
+                     {{ ckeditor.create(value=editpost.content) }}
+                  </div>
+                  <br />
+                  <!-- Submit Button -->
+                  <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Update review</button>
+               </form>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </main>
 {% endblock %}

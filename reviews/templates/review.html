@@ -1,61 +1,56 @@
 {% extends "base.html" %}
-
 {% block content %}
 {{ ckeditor.load() }}
-
 <header class="masthead" style="background-image: url('https://oracleoftime.com/wp-content/uploads/2020/12/Farer-Morgan-Pilot-featured.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>Add Review</h1>
-                </div>
+   <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+               <h1>Add Review</h1>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </header>
-
 <!-- Review post form -->
-
 <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h4 style="color: #6c757d;">Add your review below!</h4>
-                <div class="my-5">
-                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
-                        <!-- Title -->
-                        <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." maxlength="60" required />
-                            <label for="title">Title</label>
-                        </div>
-                        <!-- Subtitle -->
-                        <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." maxlength="50" required/>
-                            <label for="subtitle">Subtitle</label>
-                        </div>     
-                        <!-- Content -->
-                        <div class="form-floating">
-                            <p style="color: #6c757d;">Enter your content below...</p>
-                             {{ ckeditor.create() }}
-                        </div>
-                        <br />
-                        <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Banner" name="banner" id="banner" data-sb-validations="Please enter your banner image url." maxlength="255" required/>
-                            <label for="subtitle">Enter banner image url here...</label>
-                        </div>  
-                        <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Content Image" name="contentimg" id="contentimg" data-sb-validations="Please enter your image url." maxlength="255" required/>
-                            <label for="subtitle">Enter content image url here...</label>
-                        </div>  
-                        </br>
-                        <!-- Submit Button -->
-                        <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Post review</button>
-                    </form>
-                </div>
+   <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <h4 style="color: #6c757d;">Add your review below!</h4>
+            <div class="my-5">
+               <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" data-sb-form-api-token="API_TOKEN">
+                  <!-- Title -->
+                  <div class="form-floating">
+                     <input class="form-control" type="text" placeholder="Title" name="title" id="title" data-sb-validations="Please enter your title." maxlength="60" required />
+                     <label for="title">Title</label>
+                  </div>
+                  <!-- Subtitle -->
+                  <div class="form-floating">
+                     <input class="form-control" type="text" placeholder="Subtitle" name="subtitle" id="subtitle" data-sb-validations="Please enter your subtitle." maxlength="50" required/>
+                     <label for="subtitle">Subtitle</label>
+                  </div>
+                  <!-- Content -->
+                  <div class="form-floating">
+                     <p style="color: #6c757d;">Enter your content below...</p>
+                     {{ ckeditor.create() }}
+                  </div>
+                  <br />
+                  <div class="form-floating">
+                     <input class="form-control" type="text" placeholder="Banner" name="banner" id="banner" data-sb-validations="Please enter your banner image url." maxlength="255" required/>
+                     <label for="subtitle">Enter banner image url here...</label>
+                  </div>
+                  <div class="form-floating">
+                     <input class="form-control" type="text" placeholder="Content Image" name="contentimg" id="contentimg" data-sb-validations="Please enter your image url." maxlength="255" required/>
+                     <label for="subtitle">Enter content image url here...</label>
+                  </div>
+                  </br>
+                  <!-- Submit Button -->
+                  <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Post review</button>
+               </form>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </main>
-
 {% endblock %}

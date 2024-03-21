@@ -1,103 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/ba6cdc6122.js" crossorigin="anonymous"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <meta name="description" content="author: Joel Biddle" />
-    <title>Joel's Watch Club</title>
-    <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon.png">
-
-</head>
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-          <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+         crossorigin="anonymous"></script>
+      <!-- Font Awesome -->
+      <script src="https://kit.fontawesome.com/ba6cdc6122.js" crossorigin="anonymous"></script>
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <meta name="description" content="author: Joel Biddle" />
+      <title>Joel's Watch Club</title>
+      <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon.png">
+   </head>
+   <body>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+         <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('review') }}">Add Review</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('dashboard') }}">Your Account</a>
-              </li>
-              {% if current_user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('signout') }}">Log out</a>
-	            </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}">Sign in</a>
-	            </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      {% block content %}
-            
-      <header class="masthead" style="background-image: url('https://www.scottishwatches.co.uk/wp49/wp-content/uploads/2022/09/SBGX353_KV_1.jpeg')">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading">
-                        <h1>Base</h1>
-                    </div>
-                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('review') }}">Add Review</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('dashboard') }}">Your Account</a>
+                  </li>
+                  {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('signout') }}">Log out</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('login') }}">Sign in</a>
+                  </li>
+                  {% endif %}
+               </ul>
             </div>
-        </div>
-    </header>
-    
+         </div>
+      </nav>
+      {% block content %}
+      <header class="masthead" style="background-image: url('https://www.scottishwatches.co.uk/wp49/wp-content/uploads/2022/09/SBGX353_KV_1.jpeg')">
+         <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+               <div class="col-md-10 col-lg-8 col-xl-7">
+                  <div class="site-heading">
+                     <h1>Base</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
       {% endblock %}
-  <footer class="text-center">
-    <div class="container pt-4">
-      <section class="mb-4">
-        <hr>
-          <!-- Social media -->
-            <!-- Facebook -->
-            <a href="https://www.facebook.com" role="button" target="_blank" aria-label="Link to our Facebook" class="btn btn-link btn-floating btn-lg">
-              <i class="fa-brands fa-square-facebook"></i>
-            </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com" role="button" target="_blank" aria-label="Link to our Instagram" class="btn btn-link btn-floating btn-lg">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <!-- Twitter -->
-            <a href="https://www.twitter.com" role="button" target="_blank" aria-label="Link to our Twitter/X" class="btn btn-link btn-floating btn-lg">
-              <i class="fa-brands fa-twitter"></i>
-            <a class="nav-link" href="{{ url_for('about') }}" class="btn btn-link btn-floating btn-lg">About us</a>
-            <hr>
-          </section>   
-    </div>
-    </footer>
-</body>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
+      <footer class="text-center">
+         <div class="container pt-4">
+            <section class="mb-4">
+               <hr>
+               <!-- Social media -->
+               <!-- Facebook -->
+               <a href="https://www.facebook.com" role="button" target="_blank" aria-label="Link to our Facebook" class="btn btn-link btn-floating btn-lg">
+               <i class="fa-brands fa-square-facebook"></i>
+               </a>
+               <!-- Instagram -->
+               <a href="https://www.instagram.com" role="button" target="_blank" aria-label="Link to our Instagram" class="btn btn-link btn-floating btn-lg">
+               <i class="fa-brands fa-instagram"></i>
+               </a>
+               <!-- Twitter -->
+               <a href="https://www.twitter.com" role="button" target="_blank" aria-label="Link to our Twitter/X" class="btn btn-link btn-floating btn-lg">
+               <i class="fa-brands fa-twitter"></i>
+               <a class="nav-link" href="{{ url_for('about') }}" class="btn btn-link btn-floating btn-lg">About us</a>
+               <hr>
+            </section>
+         </div>
+      </footer>
+   </body>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"></script>
 </html>

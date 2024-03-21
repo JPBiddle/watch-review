@@ -1,65 +1,62 @@
 {% extends "base.html" %}
-
 {% block content %}
 <script>
-function check_pass() {
-    if (document.getElementById('password').value ==
-            document.getElementById('confirmpassword').value) {
-        document.getElementById('submitButton').disabled = false;
-        document.getElementById("ismatch").innerHTML = "Passwords match.</br>"
-    } else {
-        document.getElementById('submitButton').disabled = true;
-        document.getElementById("ismatch").innerHTML = "Passwords don't match.</br>"
-    }
-}
+   function check_pass() {
+       if (document.getElementById('password').value ==
+               document.getElementById('confirmpassword').value) {
+           document.getElementById('submitButton').disabled = false;
+           document.getElementById("ismatch").innerHTML = "Passwords match.</br>"
+       } else {
+           document.getElementById('submitButton').disabled = true;
+           document.getElementById("ismatch").innerHTML = "Passwords don't match.</br>"
+       }
+   }
 </script>
 <header class="masthead" style="background-image: url('https://www.scottishwatches.co.uk/wp49/wp-content/uploads/2022/09/SBGX353_KV_1.jpeg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>Sign up!</h1>
-                    <p></p>
-                </div>
+   <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+               <h1>Sign up!</h1>
+               <p></p>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </header>
-
 {% for msg in get_flashed_messages() %}
-<h4 class="text-center" style="color:#007ce9;">{{ msg }}</h4></br>
+<h4 class="text-center" style="color:#007ce9;">{{ msg }}</h4>
+</br>
 {% endfor %}
-
 <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h4 style="color: #6c757d;">Enter your desired username and password </h4>
-                <div class="my-5">
-                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('newuser') }}" data-sb-form-api-token="API_TOKEN">
-                        <!-- Username -->
-                        <div class="form-floating">
-                            <input class="form-control" type="text" placeholder="Username" name="username" id="username" data-sb-validations="Please enter your username." required/>
-                            <label for="username">Username</label>
-                        </div>
-                        <!-- Password -->
-                        <div class="form-floating">
-                            <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." onchange='check_pass();' required/>
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" type="password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" data-sb-validations="Please confirm your password." onchange='check_pass();' required/>
-                            <label for="confirmpassword">Confirm Password</label>
-                        </div>
-                        </br>
-                        <span id="ismatch"></span>                        
-                    </br>
-                        <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Sign up</button>
-                    </form>
-                </div>
+   <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+         <div class="col-md-10 col-lg-8 col-xl-7">
+            <h4 style="color: #6c757d;">Enter your desired username and password </h4>
+            <div class="my-5">
+               <form name="addForm" id="addForm" method="POST" action="{{ url_for('newuser') }}" data-sb-form-api-token="API_TOKEN">
+                  <!-- Username -->
+                  <div class="form-floating">
+                     <input class="form-control" type="text" placeholder="Username" name="username" id="username" data-sb-validations="Please enter your username." required/>
+                     <label for="username">Username</label>
+                  </div>
+                  <!-- Password -->
+                  <div class="form-floating">
+                     <input class="form-control" type="password" placeholder="Password" name="password" id="password" data-sb-validations="Please enter your password." onchange='check_pass();' required/>
+                     <label for="password">Password</label>
+                  </div>
+                  <div class="form-floating">
+                     <input class="form-control" type="password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" data-sb-validations="Please confirm your password." onchange='check_pass();' required/>
+                     <label for="confirmpassword">Confirm Password</label>
+                  </div>
+                  </br>
+                  <span id="ismatch"></span>                        
+                  </br>
+                  <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">Sign up</button>
+               </form>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </main>
-
 {% endblock %}
