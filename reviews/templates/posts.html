@@ -5,30 +5,31 @@
 <header class="masthead" style="filter: grayscale(1); background-image: url({{ posts.banner }})">
   <div class="container position-relative px-4 px-lg-5 bg-dark bg-opacity-25">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="site-heading">
-                <h1>{{ posts.title }}</h1>
-                <h2 class="subheading">{{ posts.subtitle }}</h2>
-                <span class="meta">Posted by
-                  {{ posts.poster.username }} on {{ posts.date.strftime('%d %B, %Y') }}
-                  </span>
-              </div>
-            </div>
-          </div>
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{ posts.title }}</h1>
+          <h2 class="subheading">{{ posts.subtitle }}</h2>
+          <span class="meta">Posted by
+            {{ posts.poster.username }} on {{ posts.date.strftime('%d %B, %Y') }}
+          </span>
         </div>
-      </header>
+      </div>
+    </div>
+  </div>
+</header>
 
-   <!-- Post Content -->
-   <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-10 mx-auto">
-          {{ posts.content|safe }}
-          <img class="text-center rounded img-fluid mx-auto" src="{{ posts.contentimg }}" alt="Card image" style="max-height:25rem; object-fit:cover;">
-        </div>
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-10 mx-auto">
+        {{ posts.content|safe }}
+        <img class="text-center rounded img-fluid mx-auto" src="{{ posts.contentimg }}" alt="Card image"
+          style="max-height:25rem; object-fit:cover;">
+      </div>
     </div>
-    </div>
-  </article>
+  </div>
+</article>
 
 
 {% endblock %}

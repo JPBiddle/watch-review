@@ -2,7 +2,7 @@
 
 ## Code Institute Milestone Project 2
 
-![Portfolio Mockup](assets/readme-files/)
+![Portfolio Mockup](reviews/static/assets/img/readme_img/review_mockup.png)
 [Click here to view the live project]()
 
 - [Joel's Watch Club](#joels-watch-club)
@@ -129,7 +129,37 @@ Based on the requirements of the Strategy plane, I have identified two categorie
 
 ### Structure
 
-Based on the information so far, I intend to have a home page with links to everything a user needs to get started. From there, links to sign up will appear, and if the user is signed in a logout button will appear. Users will not be able to post a review or view the user dashboard without being logged in. 
+Based on the information so far, I intend to have a home page with links to everything a user needs to get started. From there, links to sign up will appear, and if the user is signed in a logout button will appear.
+
+Users will not be able to post a review or view the user dashboard without being logged in. 
+
+The intended path will be as follows:
+
+#### Unregistered User
+
+ - View Reviews on home page
+ - Add review -> login required, please sign in (sign in redirect)
+ - Sign in (No user? sign up here -> Sign Up -> Login (redirect) -> User Dashboard (redirect)
+
+#### Existing User
+
+ - View Reviews on home page
+ - Add review -> login required, please sign in (sign in redirect)
+ - Sign in -> User Dashboard (redirect)
+ - Add review -> User dashboard (redirect after post)
+ - User dashboard -> Edit post -> User dashboard (redirect after edit)
+ - Log out -> Sign in (redirect)
+
+Below is a map created using Balsamiq - 
+
+<details>
+
+<summary>Site Map</summary>
+
+![Map](reviews/static/assets/img/readme_img/map.png)
+
+</details>
+
 ---
 
 ### Skeleton
@@ -140,7 +170,69 @@ Wireframes were produced using balsamiq. These will showcase the site as intende
 
 <summary>Wireframes</summary>
 
-![viability](assets/readme-files/)
+<details>
+
+<summary>Home</summary>
+
+![Home](reviews/static/assets/img/readme_img/home.png)
+
+</details>
+
+<details>
+
+<summary>View Review</summary>
+
+![Home](reviews/static/assets/img/readme_img/posted_review.png)
+
+</details>
+
+<details>
+
+<summary>Add Review</summary>
+
+![Home](reviews/static/assets/img/readme_img/add_review.png)
+
+</details>
+
+<details>
+
+<summary>User Dashboard</summary>
+
+![Home](reviews/static/assets/img/readme_img/dashboard.png)
+
+</details>
+
+<details>
+
+<summary>Sign In</summary>
+
+![Home](reviews/static/assets/img/readme_img/sign_in.png)
+
+</details>
+
+<details>
+
+<summary>Sign Up</summary>
+
+![Home](reviews/static/assets/img/readme_img/sign_up.png)
+
+</details>
+
+<details>
+
+<summary>Edit Review</summary>
+
+![Home](reviews/static/assets/img/readme_img/edit_review.png)
+
+</details>
+
+<details>
+
+<summary>About</summary>
+
+![Home](reviews/static/assets/img/readme_img/about.png)
+
+</details>
 
 </details>
 
@@ -159,7 +251,7 @@ The delete post button will be red to reflect a warning that this is permanent.
 <details>
 <summary>Colour Palette</summary>
 
-![viability](assets/readme-files/)
+![viability](reviews/static/assets/img/readme_img/palette.png)
 
 </details>
 
@@ -167,11 +259,13 @@ The delete post button will be red to reflect a warning that this is permanent.
 
 The typography I will use will be from Google Fonts.
 
-The titles will be '', . In keeping with this, the rest of the text in the site will be '', another font.
+The titles will be 'lusitana'. In keeping with this, the rest of the text in the site will be 'lusitana'. Back up font will be 'Georgia'.
+
+Both are uncomplicated and elegant fonts chosen for readability.
 
 ### Imagery
 
-All imagery will be from Hodinkee, credit will be listed at the bottom of ReadMe.
+All imagery will be from Hodinkee, a watch news site, and urls will be passed from there to simulate user reviews. Credit will be listed at the bottom of ReadMe.
 
 [Back to top](#joels-watch-club)
 
@@ -271,6 +365,10 @@ Due to time constraints I was unable to implement the following functions, howev
 - Jinja
 - Python
 - Limited use of javascript
+- Flask
+- SQAlchemy
+- CK editor
+- Werkzeug security
 
 ### Frameworks, Libraries and Programs
 
@@ -333,7 +431,7 @@ To deploy this page to GitHub Pages from its GitHub repository, the following st
 - Youtube guide
 - Forum post
 - Tutor Sarah
-- 
+- CleanBlog 
 - w3schools, 
 
 ---
